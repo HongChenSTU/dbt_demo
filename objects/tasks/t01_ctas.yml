@@ -1,4 +1,4 @@
-task_name: DBT_MANVOORT_DEV.T01_ctas,
+task_name: DBT_MANVOORT_DEV.T01_CTAS,
 warehouse_name: COMPUTE_WH,
-scheduled_time: "15 minute",
-task_sql: " as create table tbl_sample if not exists as select * from snowflake_sample_data.tpcds_sf10tcl.store_sales limit 1"
+scheduled_time: "'15 minute'",
+task_sql: " create table tbl_sample if not exists as select * from snowflake_sample_data.tpcds_sf10tcl.store_sales limit 1"
