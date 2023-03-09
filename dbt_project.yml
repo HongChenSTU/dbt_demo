@@ -39,3 +39,13 @@ models:
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view
+    STAGE:
+      +materialized: table
+      schema: stage
+    RAW:
+      +materialized: table
+      schema: raw
+    MART:
+      +materialized: view
+      schema: mart
+
