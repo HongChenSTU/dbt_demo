@@ -1,0 +1,5 @@
+task_name: t01_ctas,
+task_sql: warehouse = compute_wh 
+          schedule = "15 minute" 
+          as 
+          create table tbl_sample if not exists as select * from snowflake_sample_data.tpcds_sf10tcl.store_sales limit 1
