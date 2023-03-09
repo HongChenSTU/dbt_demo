@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: raw_hong
+    schema: public
+    database: raw_hong
+
+    tables:
+      - name: store_sales
+      - name: date_dim

@@ -1,0 +1,12 @@
+{{ config(materialized='incremental') }}
+
+
+
+select * 
+from {{ source('raw_hong', 'store_sales') }}
+
+{% if is_incremental() %}
+limit  6
+{% else %}
+limit 7
+{% endif %}
