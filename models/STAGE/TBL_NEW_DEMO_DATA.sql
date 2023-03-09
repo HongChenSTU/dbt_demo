@@ -4,10 +4,10 @@ with
 
         select
 
-            uuid_string() as uuiid,
-            abs(random(5)) as int_id,
-            substr(abs(random()), 17) as value,
-            convert_timezone('Europe/Berlin', current_timestamp(2)) as dss_load_date
+            uuid_string()::string as uuid,
+            abs(random(5))::int as int_id,
+            substr(abs(random()), 17)::int as value,
+            convert_timezone('Europe/Berlin', current_timestamp(2))::timestamp_tz as dss_load_date
 
         from table(generator(rowcount => 5))
 
