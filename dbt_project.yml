@@ -43,7 +43,7 @@ models:
       +materialized: table
       schema: stage
     RAW:
-      +materialized: table
+      +materialized: tabl
       schema: raw
     MART:
       +materialized: view
