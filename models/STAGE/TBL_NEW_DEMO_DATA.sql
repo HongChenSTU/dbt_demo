@@ -1,20 +1,17 @@
---{{ config(materialized='table') }}
+-- {{ config(materialized='table') }}
+with
+    source_data as (
 
-with source_data as (
+        select
 
-    select 
+            uuid_string() as uuiid,
+            abs(random(5)) as int_id,
+            substr(abs(random()), 17) as value,
+            convert_timezone('Europe/Berlin', current_timestamp(2)) as dss_load_date
 
-    SS_SOLD_DATE_SK
-    ,SS_TICKET_NUMBER
-    ,SS_QUANTITY
-    ,ss_ext_sales_price
-    ,current_timestamp() as DSS_LOAD_DATE
-  
-    from snowflake_sample_data.tpcds_sf10tcl.store_sales
-    
-    limit 100
+        from table(generator(rowcount => 5))
 
-)
+    )
 
 select *
 from source_data
