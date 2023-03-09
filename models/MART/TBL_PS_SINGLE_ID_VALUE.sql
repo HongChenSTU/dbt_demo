@@ -14,7 +14,7 @@ with
         select
             uuid::string as uuid,
             int_id::int as int_id,
-            value::int,
+            value::int as value,
             dss_load_date::timestamp_tz as dss_load_date
         from {{ ref("TBL_PS_ID_DATA") }} ts
     )
