@@ -4,10 +4,10 @@ with
     source_data as (
 
         select
-            uuiid,
-            int_id,
-            value,
-            dss_load_date
+            uuid::string as uuid,
+            int_id::int as int_id,
+            value::int as value,
+            dss_load_date::timestamp_tz as dss_load_date
         from {{ ref("TBL_NEW_DEMO_DATA") }} ts
     )
 
