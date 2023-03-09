@@ -1,5 +1,15 @@
-{%- macro create_task(task_name, warehouse_name, scheduled_time, task_sql)-%}
+{%- macro
 
+create_task(
+    task_name,
+    warehouse_name,
+    scheduled_time,
+    sql
+)
+
+-%}
+
+{% if execute %}
     {% set log_message = 'Executing create_task macro for task -> ' ~ task_name ~ '...' %}
     {{ log(log_message, True) }}
    
@@ -10,12 +20,14 @@
         create or replace task {{task_name}}
         warehouse={{warehouse_name}}
         schedule= {{scheduled_time}}
-        {{task_sql}};
+        as {{sql}};
         alter task {{task_name}} resume;
         commit;
     {%- endset -%} 
     {%- do run_query(sql) -%} 
 
     {% do log('Task has been successfully created.', info=True) %}
+
+{% endif %}
 
 {%- endmacro -%}
