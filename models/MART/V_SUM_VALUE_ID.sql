@@ -8,4 +8,4 @@ with
     )
 
 select *
-from source_data
+from source_data 
