@@ -24,7 +24,7 @@ from source_data
 
 {% if is_incremental() %}
 
--- this filter will only be applied on an incremental run!
+-- this filter will only be applied on an incremental run
 where dss_load_date > (select max(dss_load_date) from {{ this }})
 
 {% endif %}
